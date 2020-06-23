@@ -25,6 +25,7 @@ body {
 }
 
 .header-buttons {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -34,10 +35,10 @@ body {
 .button {
   padding: 0.25rem;
   margin: 0.25rem;
-  border-style: solid;
-  border-width: 3px;
-  border-color: #bbb #aaa #999;
-  box-shadow: inset 0 -1px 1px #000
+  border-top: 4px solid #eee;
+  border-left: 4px solid #ddd;
+  border-right: 3px solid #666;
+  border-bottom: 3px solid #666;
 }
 
 .home {
@@ -68,17 +69,32 @@ body {
 }
 
 .upload-box {
-  padding: 2rem 3rem;
+  border-top: 4px solid #666;
+  border-left: 4px solid #666;
+  border-right: 3px solid #ddd;
+  border-bottom: 3px solid #ddd;
+  background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+  cursor: pointer;
   color: grey;
-  border: 2px solid grey;
+  padding: 2rem 3rem;
+  font-family: arial;
+  font-weight: 700;
   font-size: 4rem;
   margin-bottom: 1rem;
+  text-shadow: 0px 2px 0px #ddd;
 }
 
 .upload-button {
+  cursor: pointer;
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
-  border: 1px solid grey;
+  border-top: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
+  box-shadow: 1px 1px 0 #111;
 }
 
 
@@ -97,24 +113,38 @@ body {
 }
 
 .processing-panel-topbar {
-  background-color: grey;
+  background: #a1a1a1;
+  border-top: 2px solid #c8c8c8;
+  border-left: 2px solid #aeaeae;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
+  box-shadow: 1px 1px 0 #111;
   width: 100%;
   height: 2rem;
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
+  outline: 0;
 }
 
 .processing-panel-close-button {
   color: red;
+  cursor: pointer;
 }
 
 .processing-panel-body {
-  background-color: blue;
+  background-color: #60f;
+  border-top: 2px solid #111;
+  border-left: 2px solid #aeaeae;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
+  box-shadow: 1px 1px 0 #111;
+  color: #fff;
   width: 100%;
   flex-grow: 1;
   text-align: left;
   padding: 2rem;
+  outline: 0;
 }
 
 .archive {
@@ -158,6 +188,7 @@ body {
   padding: 1rem;
   width: 100%;
   border-bottom: 1px solid black;
+  background-color: #ccc;
 }
 
 .archive-item-text {
