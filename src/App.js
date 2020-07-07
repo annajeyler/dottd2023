@@ -11,14 +11,35 @@ import './App.css';
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       isProcessingPanelOpen: false,
       isArchiveOrHome: 'home',
+      isHotDog: false,
+      prophecy: null,
+      archivedItems: [],
+      isAudioPlaying: false,
     }
   }
 
+  componentDidMount() {
+    // https://franker-backend.herokuapp.com
+    this.fetchArchiveItems();
+  }
+  
+  fetchArchiveItems = () => {
+    fetch('http://localhost:8080/items')
+      .then((data) => {
+        return data.json();
+      })
+      .then((json) => {
+        console.log(json.items);
+        this.setState({
+          archivedItems: json.items,
+        });
+      })
+  }
+
   onHomeClick = () => {
-    // window.open('https://fonderiedarling.org/Place-Publique-FD.html');
     this.setState({
       isArchiveOrHome: 'home',
     });
@@ -30,17 +51,28 @@ class App extends PureComponent {
     });
   }
 
-  onDownloadClick = () => {
-
+  onDarlingClick = () => {
+    window.open('https://fonderiedarling.org/en/D.o.t.T.D.html');
   }
 
-  onMuteClick = () => {
-
+  onAudioClick = () => {
+    const newState = this.state.isAudioPlaying ? false : true;
+    this.setState({
+      isAudioPlaying: newState,
+    }, () => {
+      if (newState === true) {
+        this.audioRef.play();
+      } else {
+        this.audioRef.pause();
+      }
+    });
   }
 
-  openProcessingPanel = () => {
+  openProcessingPanel = (isHotDog, prophecy) => {
     this.setState({
       isProcessingPanelOpen: true,
+      isHotDog,
+      prophecy,
     })
   }
 
@@ -48,6 +80,11 @@ class App extends PureComponent {
     this.setState({
       isProcessingPanelOpen: false,
     })
+  }
+
+  renderProphecyText = () => {
+    const text = this.state.isHotDog ? this.state.prophecy : 'It appears this is not a hot dog. Please try another image.';
+    return {__html: text};
   }
 
   renderProcessingPanel = () => {
@@ -65,10 +102,7 @@ class App extends PureComponent {
               X
             </div>
           </div>
-          <div className="processing-panel-body">
-            blah
-            <br />
-            prophecy text here
+          <div dangerouslySetInnerHTML={this.renderProphecyText()} className="processing-panel-body">
           </div>
         </div>
       </div>
@@ -80,28 +114,41 @@ class App extends PureComponent {
   }
 
   renderHome = () => {
-    return <Home openProcessingPanel={this.openProcessingPanel} />
+    return <Home openProcessingPanel={this.openProcessingPanel} fetchArchiveItems={this.fetchArchiveItems} />
   }
 
   renderArchive = () => {
-    return <Archive />
+    return <Archive archivedItems={this.state.archivedItems} />
+  }
+
+  onPlay = () => {
+    this.setState({
+      isAudioPlaying: true,
+    });
+  }
+
+  getRightHeaderClass = () => {
+    return this.state.isArchiveOrHome === 'home' ? 'right-header hidden' : 'right-header';
   }
 
   render() {
     return (
       <div className="app">
+        <audio onPlay={this.onPlay} ref={(input) => {this.audioRef = input}} autoPlay={true}>
+          <source src="dotd.mp3" type="audio/mpeg" />
+        </audio>
         {this.renderProcessingPanel()}
         <div className="header">
           <div className="left-header">
             D.o.t.T.D
           </div>
-          <div className="header-buttons">
+          <div className="header-buttons">  
             <Button onClick={this.onHomeClick} src={home}></Button>
             <Button onClick={this.onArchiveClick} src={world}></Button>
-            <Button onClick={this.onDownloadClick} src={sun}></Button>
-            <Button onClick={this.onMuteClick} src={sound}></Button>
+            <Button onClick={this.onDarlingClick} src={sun}></Button>
+            <Button onClick={this.onAudioClick} src={sound}></Button>
           </div>
-          <div className="right-header">
+          <div className={this.getRightHeaderClass()}>
             D.o.t.T.D
           </div>
         </div>
