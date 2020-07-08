@@ -120,7 +120,7 @@ class Home extends PureComponent {
   }
 
   generateUploadUrl = (file) => {
-    return fetch('http://localhost:8080/signed', {
+    return fetch('https://franker-backend.herokuapp.com/signed', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -147,7 +147,7 @@ class Home extends PureComponent {
   }
 
   completeSubmission = (url, text, fortuneId) => {
-    return fetch('http://localhost:8080/submit', {
+    return fetch('https://franker-backend.herokuapp.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -207,3 +207,52 @@ body {
   padding: 1rem;
   width: 100%;
 }
+
+/*
+mobile app
+*/
+
+.mobile-app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.mobile-body {
+  font-size: 1.3rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  min-height: 50vh;
+  min-width: 50vw;
+  max-height: 90vh;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-text-holder {
+  width: 100%;
+  border-top: 4px solid #eee;
+  border-left: 4px solid #ddd;
+  border-right: 3px solid #666;
+  border-bottom: 3px solid #666;
+  padding: 1rem;
+}
+
+.mobile-buttons-holder {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.mobile-button {
+  border-top: 4px solid #eee;
+  border-left: 4px solid #ddd;
+  border-right: 3px solid #666;
+  border-bottom: 3px solid #666;
+  padding: 0.3rem 0.7rem;
+}
