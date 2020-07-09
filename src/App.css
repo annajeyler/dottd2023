@@ -1,16 +1,24 @@
 body {
   background-color: #c0c0c0;
   font-family:"Fixedsys Excelsior 3.01",monospace;
-  border-top: 4px solid #000;
-  border-left: 4px solid #ccc;
-  border-right: 3px solid #666;
-  border-bottom: 3px solid #666;
-  min-height: 100vh;
 }
 
+.border {
+  border-top: 7px solid #acacac;
+  border-left: 7px solid #666;
+  border-right: 7px solid #d5d5d5;
+  border-bottom: 7px solid #404040;
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
 .app {
   text-align: center;
-  padding: 2rem 10vw;
+  padding: 2rem 1vw;
+  max-width: 800px;
+  margin: auto;
 }
 
 .header {
@@ -19,6 +27,8 @@ body {
   justify-content: space-around;
   align-items: center;
   font-size: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .right-header {
@@ -50,11 +60,25 @@ body {
   border-bottom: 3px solid #666;
 }
 
+.button:hover {
+  background-color: #bbb6b6;
+}
+
+.button:active {
+  border-top: 4px solid #666;
+  border-left: 4px solid #e1e1e1;
+  border-right: 3px solid #d0d0d0;
+  border-bottom: 3px solid #d2d2d2;
+  background-color: #a8a6a6;
+}
+
 .home {
   padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .title-text {
@@ -79,9 +103,10 @@ body {
 
 .upload-box {
   border-top: 4px solid #666;
-  border-left: 4px solid #666;
+  border-left: 4px solid #9d9d9d;
   border-right: 3px solid #ddd;
   border-bottom: 3px solid #ddd;
+  background-clip: text;
   background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -93,19 +118,34 @@ body {
   font-size: 4rem;
   margin-bottom: 1rem;
   text-shadow: 0px 2px 0px #ddd;
+  width: 120px;
+  height: 120px;
+  margin: 15px auto;
+}
+
+.upload-box:active {
+  color: grey;
+  background-color: #666;
 }
 
 .upload-button {
   cursor: pointer;
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
-  border-top: 2px solid #ddd;
-  border-left: 2px solid #ddd;
-  border-right: 1px solid #666;
-  border-bottom: 1px solid #666;
-  box-shadow: 1px 1px 0 #111;
+  border-top: 3px solid #eee;
+  border-left: 3px solid #ddd;
+  border-right: 3px solid #666;
+  border-bottom: 3px solid #666;
+  width: 170px;
 }
 
+.upload-button:active {
+  border-top: 4px solid #666;
+  border-left: 4px solid #ddd;
+  border-right: 3px solid  #eee;
+  border-bottom: 3px solid  #eee;
+  box-shadow: inherit;
+}
 
 .processing-panel-container {
   width: 100%;
@@ -213,8 +253,8 @@ mobile app
 */
 
 .mobile-app {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
 }
 
 .mobile-body {
@@ -255,4 +295,5 @@ mobile app
   border-right: 3px solid #666;
   border-bottom: 3px solid #666;
   padding: 0.3rem 0.7rem;
+  width: 120px;
 }

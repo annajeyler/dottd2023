@@ -138,6 +138,7 @@ class DesktopApp extends PureComponent {
   render() {
     return (
       <div className="app">
+        <div class="border"></div>
         <audio onPlay={this.onPlay} ref={(input) => {this.audioRef = input}} autoPlay={true}>
           <source src="dotd.mp3" type="audio/mpeg" />
         </audio>
